@@ -776,6 +776,7 @@
             color: var(--secondary);
             text-decoration: none;
             margin: 0;
+            font-weight: 700;
             transition: transform 0.2s ease;
         }
 
@@ -802,6 +803,16 @@
             background: var(--text-secondary);
             padding: 6px 12px;
             border-radius: 6px;
+            margin-top: 8px;
+        }
+
+        a.side-project-tag {
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+
+        a.side-project-tag:hover {
+            background: var(--secondary);
         }
 
         /* ---- Footer ---- */
@@ -1141,15 +1152,37 @@
         </div>
 
         <div class="experience-other">
-            <p class="section-label">Speaking, writing & more</p>
+            <p class="section-label">OTHER THINGS I'VE DONE</p>
 
             <div class="experience-other-block">
-                <h4>Speaking</h4>
-                <ul class="experience-other-list">
-                    <li><a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener">Building Agents People Can't Stop Talking To</a> (BaseCamp, 2025)</li>
-                    <li><a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener">Mass Adoption through Dapps: How to Bring More Users Onchain</a> (Ethereum CC, 2025)</li>
-                    <li><a href="https://www.youtube.com/watch?v=uLE268gdCQQ" target="_blank" rel="noopener">Supercharging the UX of Web3 Wallets</a> (Ethereum Denver, 2023)</li>
-                </ul>
+                <div class="side-project-cards">
+                    <div class="side-project-card">
+                        <div class="side-project-card-icon side-project-card-icon--img">
+                            <img src="assets/basecamp.png" alt="">
+                        </div>
+                        <div class="side-project-card-body">
+                            <h4 class="side-project-card-title">BaseCamp 2025</h4>
+                            <div class="side-project-card-desc-row">
+                                <p class="side-project-card-desc">Speaker at BaseCamp 2025 on Building Agents People Can't Stop Talking To.</p>
+                                <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch BaseCamp talk">→</a>
+                            </div>
+                            <span class="side-project-tag">Speaking</span>
+                        </div>
+                    </div>
+                    <div class="side-project-card">
+                        <div class="side-project-card-icon side-project-card-icon--img">
+                            <img src="assets/ethcc.png" alt="">
+                        </div>
+                        <div class="side-project-card-body">
+                            <h4 class="side-project-card-title">Ethereum CC, Cannes 2025</h4>
+                            <div class="side-project-card-desc-row">
+                                <p class="side-project-card-desc">Speaker at Ethereum CC, Cannes 2025 on Mass Adoption through Dapps: How to Bring More Users Onchain.</p>
+                                <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch Ethereum CC talk">→</a>
+                            </div>
+                            <span class="side-project-tag">Speaking</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="side-project-cards">
@@ -1181,9 +1214,7 @@
                         <h4 class="side-project-card-title">Vista</h4>
                         <div class="side-project-card-desc-row">
                             <p class="side-project-card-desc">Won 1st Place Gnosis Chain Bounty at ETHLisbon (2022) for Vista, an onchain loyalty tool.</p>
-                            <a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" class="side-project-link" aria-label="View Vista project on TAIKAI">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M17 7h-6v6"/></svg>
-                            </a>
+                            <a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" class="side-project-link" aria-label="View Vista project on TAIKAI">→</a>
                         </div>
                         <span class="side-project-tag">Side projects</span>
                     </div>
