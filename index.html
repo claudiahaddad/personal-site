@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claudia Haddad</title>
+    <!-- To load Canela: create a kit at fonts.adobe.com with Canela, then add: <link rel="stylesheet" href="https://use.typekit.net/YOUR_KIT_ID.css"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #1a1a2e;
+            --accent-light: #e8e8e8;
+            --secondary: #6E8079;
+            --secondary-light: #7A8F87;
+            --text: #1a1a2e;
+            --text-secondary: #555;
+            --bg: #fffef9;
+            --white: #ffffff;
+            --border: #e5e5e5;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---- Navbar ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(255, 254, 249, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            display: block;
+            mix-blend-mode: screen;
+        }
+
+        .nav-logo.spin {
+            animation: logoSpin 0.6s ease;
+        }
+
+        @keyframes logoSpin {
+            to { transform: rotate(360deg) scale(1.05); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* ---- Sections ---- */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---- Hero ---- */
+        #home {
+            padding-top: 80px;
+            padding-bottom: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-greeting {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .hero-icon {
+            width: clamp(56px, 10vw, 80px);
+            height: auto;
+            display: block;
+            margin: 0 auto 16px;
+            transition: transform 0.2s ease;
+        }
+
+        .hero-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-blurb-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .hero-photo {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        .hero-tagline {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 420px;
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.7;
+            text-align: left;
+        }
+
+        .hero-title {
+            font-family: 'Canela', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .hero-subtitle-wrap {
+            cursor: default;
+        }
+
+        .hero-subtitle-main {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .hero-subtitle-reveal {
+            display: block;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: 6px;
+        }
+
+        .hero-subtitle-reveal .letter {
+            display: inline;
+            opacity: 0;
+            animation: letterReveal 0.25s ease forwards;
+        }
+
+        @keyframes letterReveal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .about-photo {
+            width: 220px;
+            height: auto;
+            max-height: 420px;
+            object-fit: contain;
+            border-radius: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            margin-bottom: 24px;
+        }
+
+        .hero-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .hero-links a.primary {
+            background: var(--text);
+            color: var(--white);
+        }
+
+        .hero-links a.primary:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        .hero-links a.secondary {
+            background: var(--white);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .hero-links a.secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        /* ---- Floral dividers ---- */
+        .floral-divider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .floral-divider svg {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            opacity: 0.6;
+            color: var(--secondary);
+        }
+
+        /* ---- About ---- */
+        #about {
+            padding-top: 80px;
+            padding-bottom: 100px;
+        }
+
+        .section-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+        }
+
+        .about-grid {
+            display: block;
+        }
+
+        .about-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .about-row .about-photo {
+            flex-shrink: 0;
+            margin-bottom: 0;
+            order: 1;
+        }
+
+        .about-row .about-text {
+            flex: 1;
+            min-width: 0;
+            order: 2;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .about-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .detail-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .detail-card:hover {
+            border-color: var(--accent);
+        }
+
+        .detail-card h4 {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .detail-card p {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ---- Experience & Other ---- */
+        #experience {
+            padding-top: 80px;
+            padding-bottom: 120px;
+        }
+
+        /* Experience grid (2x2 cards) */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .experience-grid .timeline-item {
+            padding-bottom: 0;
+            padding-left: 0;
+        }
+
+        .experience-grid .timeline-dot {
+            display: none;
+        }
+
+        /* Timeline (for other sections that may use it) */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 48px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-out;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -40px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            background: var(--bg);
+            z-index: 1;
+        }
+
+        .timeline-dot.speaking { border-color: #666; }
+        .timeline-dot.writing { border-color: #555; }
+        .timeline-dot.hackathon { border-color: #444; }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
+        }
+
+        .timeline-role-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .timeline-card--visual .timeline-role-row {
+            margin-bottom: 0;
+        }
+
+        .timeline-role-row .timeline-date {
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+
+        .timeline-role-row .timeline-role {
+            margin-bottom: 0;
+        }
+
+        .timeline-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s;
+        }
+
+        .timeline-card:hover {
+            border-color: #ccc;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        /* Visual experience card (image + hover/click for details) */
+        .timeline-card--visual {
+            padding: 0;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .timeline-card--visual .timeline-card-image {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: 12px 12px 0 0;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-card--visual .timeline-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .timeline-card--visual .timeline-card-heading {
+            padding: 20px 24px 16px;
+        }
+
+        .timeline-card--visual .timeline-company {
+            margin-bottom: 4px;
+        }
+
+        .timeline-card--visual .timeline-role {
+            margin-bottom: 0;
+        }
+
+        .timeline-card--visual .timeline-card-detail {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+        }
+
+        .timeline-card--visual:hover .timeline-card-detail,
+        .timeline-card--visual.is-expanded .timeline-card-detail {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .timeline-card--visual .timeline-card-detail-inner {
+            padding: 0 24px 24px;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
+        }
+
+        .timeline-card--visual .timeline-card-detail .timeline-bullets {
+            margin: 0;
+        }
+
+        .timeline-card--visual .timeline-card-detail .timeline-bullets li {
+            font-size: 0.85rem;
+        }
+
+        .timeline-company {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 4px;
+        }
+
+        .timeline-company.speaking { color: #666; }
+        .timeline-company.writing { color: #555; }
+        .timeline-company.hackathon { color: #444; }
+
+        .timeline-role {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .timeline-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-bullets li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .timeline-bullets li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .timeline-bullets a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .timeline-bullets a:hover {
+            text-decoration: underline;
+        }
+
+        .experience-other {
+            margin-top: 56px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+
+        .experience-other-block {
+            margin-bottom: 24px;
+        }
+
+        .experience-other-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-other-block h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .experience-other-block p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .experience-other-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .experience-other-list li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 6px;
+        }
+
+        .experience-other-list a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .experience-other-list a:hover {
+            text-decoration: underline;
+        }
+
+        /* Side project cards (icon + title + description + tag) */
+        .side-project-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .side-project-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .side-project-card-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 10px;
+            background: var(--secondary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .side-project-card-icon--img {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .side-project-card-icon--img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .side-project-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .side-project-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 8px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .side-project-card-desc-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .side-project-card-desc-row .side-project-card-desc {
+            margin: 0;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .side-project-card-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .side-project-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary);
+            text-decoration: none;
+            margin: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .side-project-link:hover {
+            color: var(--text);
+        }
+
+        .side-project-link:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        .side-project-link svg {
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .side-project-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        /* ---- Footer ---- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+
+        /* ---- Easter eggs ---- */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .easter-egg-toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--text);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 10000;
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+        }
+
+        .easter-egg-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .easter-egg-toast.hide {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 700px) {
+            .about-row {
+                flex-direction: column;
+            }
+
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 254, 249, 0.92);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .timeline {
+                padding-left: 32px;
+            }
+
+            .timeline-dot {
+                left: -32px;
+                width: 14px;
+                height: 14px;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .hero-blurb-row {
+                flex-direction: column;
+            }
+
+            .hero-tagline {
+                text-align: center;
+            }
+
+            .hero-photo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .about-photo {
+                width: 180px;
+                max-height: 360px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="nav-logo">
+                <img src="assets/nav-icon.png" alt="">
+                Claudia Haddad
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Claudia Haddad</h1>
+            <div class="hero-subtitle-wrap">
+                <span class="hero-subtitle-main">Engineer turned product manager</span>
+                <span class="hero-subtitle-reveal">Building intuitive consumer and developer products.</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="floral-divider" aria-hidden="true">
+        <svg viewBox="0 0 420 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <!-- Left end star (4-point) -->
+            <path d="M12 4 L14 12 L12 20 L10 12 Z M4 12 L12 10 L20 12 L12 14 Z"/>
+            <!-- Left double lines -->
+            <line x1="28" y1="10" x2="160" y2="10" stroke-width="0.75"/>
+            <line x1="28" y1="14" x2="160" y2="14" stroke-width="0.75"/>
+            <!-- Left connector -->
+            <rect x="164" y="9" width="3" height="6" fill="currentColor"/>
+            <!-- Central floral: circle + 12-point star (petals/rays) -->
+            <circle cx="210" cy="12" r="2.8" fill="currentColor"/>
+            <path d="M216 12 L212.41 11.35 L215.2 9.6 L211.77 10.23 L213 6.8 L210.65 7.75 L210 6 L209.35 7.75 L207 6.8 L208.23 10.23 L204.8 9.6 L207.59 11.35 L204 12 L207.59 12.65 L204.8 14.4 L208.23 13.77 L207 17.2 L209.35 16.25 L210 18 L210.65 16.25 L213 17.2 L211.77 13.77 L215.2 14.4 L212.41 12.65 Z" fill="currentColor"/>
+            <!-- Right connector -->
+            <rect x="256" y="9" width="3" height="6" fill="currentColor"/>
+            <!-- Right double lines -->
+            <line x1="264" y1="10" x2="396" y2="10" stroke-width="0.75"/>
+            <line x1="264" y1="14" x2="396" y2="14" stroke-width="0.75"/>
+            <!-- Right end star (4-point) -->
+            <path d="M408 4 L410 12 L408 20 L406 12 Z M400 12 L408 10 L416 12 L408 14 Z"/>
+        </svg>
+    </div>
+
+    <!-- About -->
+    <section id="about">
+        <p class="section-label">About</p>
+        <div class="about-grid">
+            <div class="about-row">
+                <img src="assets/claudia-photo.png" alt="Claudia Haddad" class="about-photo" width="220">
+                <div class="about-text">
+                <p>I'm a product manager at Coinbase, where I lead product for chat, mini apps, and AI agents on Base — Coinbase's blockchain network with millions of users.</p>
+                <p>Before that, I launched crypto earning products, built gamification systems that drove 6x year-over-year growth, and led the migration of millions of Coinbase Pro users to a new trading platform.</p>
+                <p>I studied Cognitive Science (Computation & Cognition) at the University of Pennsylvania with a minor in Consumer Psychology & Marketing from The Wharton School. I'm passionate about making complex technology feel simple and accessible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="floral-divider" aria-hidden="true">
+        <svg viewBox="0 0 420 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4 L14 12 L12 20 L10 12 Z M4 12 L12 10 L20 12 L12 14 Z"/>
+            <line x1="28" y1="10" x2="160" y2="10" stroke-width="0.75"/>
+            <line x1="28" y1="14" x2="160" y2="14" stroke-width="0.75"/>
+            <rect x="164" y="9" width="3" height="6" fill="currentColor"/>
+            <circle cx="210" cy="12" r="2.8" fill="currentColor"/>
+            <path d="M216 12 L212.41 11.35 L215.2 9.6 L211.77 10.23 L213 6.8 L210.65 7.75 L210 6 L209.35 7.75 L207 6.8 L208.23 10.23 L204.8 9.6 L207.59 11.35 L204 12 L207.59 12.65 L204.8 14.4 L208.23 13.77 L207 17.2 L209.35 16.25 L210 18 L210.65 16.25 L213 17.2 L211.77 13.77 L215.2 14.4 L212.41 12.65 Z" fill="currentColor"/>
+            <rect x="256" y="9" width="3" height="6" fill="currentColor"/>
+            <line x1="264" y1="10" x2="396" y2="10" stroke-width="0.75"/>
+            <line x1="264" y1="14" x2="396" y2="14" stroke-width="0.75"/>
+            <path d="M408 4 L410 12 L408 20 L406 12 Z M400 12 L408 10 L416 12 L408 14 Z"/>
+        </svg>
+    </div>
+
+    <!-- Experience -->
+    <section id="experience">
+        <p class="section-label">Experience</p>
+
+        <div class="experience-grid">
+
+            <!-- Base PM II (visual card) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card timeline-card--visual" data-expandable>
+                    <div class="timeline-card-image">
+                        <img src="assets/base.png" alt="Coinbase Base">
+                    </div>
+                    <div class="timeline-card-heading">
+                        <p class="timeline-company">Coinbase · Base</p>
+                        <div class="timeline-role-row">
+                            <h3 class="timeline-role">Product Manager II</h3>
+                            <span class="timeline-date">8/2024 — Present</span>
+                        </div>
+                    </div>
+                    <div class="timeline-card-detail">
+                        <div class="timeline-card-detail-inner">
+                            <ul class="timeline-bullets">
+                                <li>Owned chat, mini apps, and AI agents for the Base app, shaping the developer platform across engineering, ecosystem, and developer relations.</li>
+                                <li>Led 0→1 launch of decentralized, encrypted messaging via XMTP integration; scaled to 1M+ messages sent.</li>
+                                <li>Built the AI agent ecosystem from 0→1, landing 10+ agent integrations in a quarter with 62%+ chat user engagement.</li>
+                                <li>Launched a curated mini-app store driving 10x DAU increase and 20%+ of total app transactions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wallet PM (visual card) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card timeline-card--visual" data-expandable>
+                    <div class="timeline-card-image">
+                        <img src="assets/wallet.svg" alt="Coinbase Wallet">
+                    </div>
+                    <div class="timeline-card-heading">
+                        <p class="timeline-company">Coinbase · Wallet</p>
+                        <div class="timeline-role-row">
+                            <h3 class="timeline-role">Product Manager</h3>
+                            <span class="timeline-date">4/2023 — 8/2024</span>
+                        </div>
+                    </div>
+                    <div class="timeline-card-detail">
+                        <div class="timeline-card-detail-inner">
+                            <ul class="timeline-bullets">
+                                <li>Launched 0→1 crypto earning products (Ethereum staking, USDC rewards), scaling to 50k+ monthly transacting users in one quarter.</li>
+                                <li>Led integrations with major DeFi protocols including 0x, Lido, and Kiln.</li>
+                                <li>Built Onchain Summer gamification from 0→1; drove 6x YoY growth with 1M+ engaged players.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APM / Advanced Trade (visual card) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card timeline-card--visual" data-expandable>
+                    <div class="timeline-card-image">
+                        <img src="assets/advanced_trade.png" alt="Coinbase Advanced Trade">
+                    </div>
+                    <div class="timeline-card-heading">
+                        <p class="timeline-company">Coinbase · Advanced Trade</p>
+                        <div class="timeline-role-row">
+                            <h3 class="timeline-role">Associate Product Manager</h3>
+                            <span class="timeline-date">8/2021 — 4/2023</span>
+                        </div>
+                    </div>
+                    <div class="timeline-card-detail">
+                        <div class="timeline-card-detail-inner">
+                            <ul class="timeline-bullets">
+                                <li>Launched 20+ features and led migration of millions of Coinbase Pro users. Shipped one-click balance transfers enabling $2B+ in funds transferred.</li>
+                                <li>Scoped and launched a new trading API to retain 10% of trading volume, migrating top clients with >$28B volume. Received High Impact Award.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meta (visual card) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card timeline-card--visual" data-expandable>
+                    <div class="timeline-card-image">
+                        <img src="assets/meta.png" alt="Meta">
+                    </div>
+                    <div class="timeline-card-heading">
+                        <p class="timeline-company">Meta · News Team</p>
+                        <div class="timeline-role-row">
+                            <h3 class="timeline-role">Software Engineer</h3>
+                            <span class="timeline-date">1/2021 — 7/2021</span>
+                        </div>
+                    </div>
+                    <div class="timeline-card-detail">
+                        <div class="timeline-card-detail-inner">
+                            <ul class="timeline-bullets">
+                                <li>Interned 3x, building full-stack features to improve access to trusted information using React and JavaScript.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="experience-other">
+            <p class="section-label">Speaking, writing & more</p>
+
+            <div class="experience-other-block">
+                <h4>Speaking</h4>
+                <ul class="experience-other-list">
+                    <li><a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener">Building Agents People Can't Stop Talking To</a> (BaseCamp, 2025)</li>
+                    <li><a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener">Mass Adoption through Dapps: How to Bring More Users Onchain</a> (Ethereum CC, 2025)</li>
+                    <li><a href="https://www.youtube.com/watch?v=uLE268gdCQQ" target="_blank" rel="noopener">Supercharging the UX of Web3 Wallets</a> (Ethereum Denver, 2023)</li>
+                </ul>
+            </div>
+
+            <div class="side-project-cards">
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/pennapps.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">PennApps</h4>
+                        <p class="side-project-card-desc">Vice Director (2018 — 2020). Led a team of 60+ members to host the largest collegiate hackathon, with 1.5k+ attendees and 30+ corporate sponsors.</p>
+                        <span class="side-project-tag">Side projects</span>
+                    </div>
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/aspiringpm.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Aspiring PM</h4>
+                        <p class="side-project-card-desc">Co-founded a publication and community to make product management more accessible. Grew to 1,000+ subscribers across LinkedIn and Substack.</p>
+                        <span class="side-project-tag">Side projects</span>
+                    </div>
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/vista.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Vista</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Won 1st Place Gnosis Chain Bounty at ETHLisbon (2022) for Vista, an onchain loyalty tool.</p>
+                            <a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" class="side-project-link" aria-label="View Vista project on TAIKAI">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M17 7h-6v6"/></svg>
+                            </a>
+                        </div>
+                        <span class="side-project-tag">Side projects</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="floral-divider" aria-hidden="true">
+        <svg viewBox="0 0 420 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4 L14 12 L12 20 L10 12 Z M4 12 L12 10 L20 12 L12 14 Z"/>
+            <line x1="28" y1="10" x2="160" y2="10" stroke-width="0.75"/>
+            <line x1="28" y1="14" x2="160" y2="14" stroke-width="0.75"/>
+            <rect x="164" y="9" width="3" height="6" fill="currentColor"/>
+            <circle cx="210" cy="12" r="2.8" fill="currentColor"/>
+            <path d="M216 12 L212.41 11.35 L215.2 9.6 L211.77 10.23 L213 6.8 L210.65 7.75 L210 6 L209.35 7.75 L207 6.8 L208.23 10.23 L204.8 9.6 L207.59 11.35 L204 12 L207.59 12.65 L204.8 14.4 L208.23 13.77 L207 17.2 L209.35 16.25 L210 18 L210.65 16.25 L213 17.2 L211.77 13.77 L215.2 14.4 L212.41 12.65 Z" fill="currentColor"/>
+            <rect x="256" y="9" width="3" height="6" fill="currentColor"/>
+            <line x1="264" y1="10" x2="396" y2="10" stroke-width="0.75"/>
+            <line x1="264" y1="14" x2="396" y2="14" stroke-width="0.75"/>
+            <path d="M408 4 L410 12 L408 20 L406 12 Z M400 12 L408 10 L416 12 L408 14 Z"/>
+        </svg>
+    </div>
+
+    <!-- Easter egg toast (hidden until triggered) -->
+    <div class="easter-egg-toast" id="easterEggToast" aria-live="polite">You found the secret! 🎉</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="mailto:claudhadd@gmail.com">Email</a> · 
+            <a href="https://x.com/claudhadd" target="_blank">Twitter</a> · 
+            <a href="https://linkedin.com/in/cmhaddad" target="_blank">LinkedIn</a>
+        </p>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        const toggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        toggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Navbar scroll shadow
+        const nav = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const top = section.offsetTop - 100;
+                if (window.scrollY >= top) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === '#' + current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Timeline animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Visual experience cards: click to toggle details (hover also shows)
+        document.querySelectorAll('.timeline-card--visual[data-expandable]').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('is-expanded');
+            });
+        });
+
+        // ---- Easter eggs ----
+        const CONFETTI_COLORS = ['#1a1a2e', '#333', '#555', '#666', '#888', '#999'];
+
+        function createConfetti() {
+            const container = document.createElement('div');
+            container.className = 'confetti';
+            document.body.appendChild(container);
+            for (let i = 0; i < 50; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'confetti-piece';
+                piece.style.left = Math.random() * 100 + '%';
+                piece.style.background = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+                piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+                piece.style.animationDelay = Math.random() * 0.5 + 's';
+                container.appendChild(piece);
+            }
+            setTimeout(() => container.remove(), 4500);
+        }
+
+        function showToast() {
+            const toast = document.getElementById('easterEggToast');
+            toast.classList.remove('hide');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+                toast.classList.add('hide');
+            }, 2500);
+        }
+
+        function triggerEasterEgg() {
+            createConfetti();
+            showToast();
+        }
+
+        // Konami code: ↑↑↓↓←→←→BA
+        const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        let konamiIndex = 0;
+        document.addEventListener('keydown', (e) => {
+            konamiIndex = e.code === konami[konamiIndex] ? konamiIndex + 1 : 0;
+            if (konamiIndex === konami.length) {
+                triggerEasterEgg();
+                konamiIndex = 0;
+            }
+        });
+
+        // Letter-by-letter reveal on load
+        const revealEl = document.querySelector('.hero-subtitle-reveal');
+        if (revealEl) {
+            const revealText = revealEl.textContent;
+            const letterDelay = 0.03;
+            const chars = revealText.split('');
+            revealEl.innerHTML = chars.map((char, i) => {
+                const span = document.createElement('span');
+                span.className = 'letter';
+                span.style.animationDelay = (i * letterDelay) + 's';
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                return span.outerHTML;
+            }).join('');
+        }
+
+        // 5 clicks on nav logo
+        const navLogo = document.querySelector('.nav-logo');
+        let logoClicks = 0;
+        let logoClickTimer;
+        navLogo.addEventListener('click', (e) => {
+            if (e.target.closest('a') && e.currentTarget.href?.endsWith('#home')) {
+                logoClicks++;
+                clearTimeout(logoClickTimer);
+                if (logoClicks >= 5) {
+                    navLogo.classList.add('spin');
+                    setTimeout(() => navLogo.classList.remove('spin'), 600);
+                    triggerEasterEgg();
+                    logoClicks = 0;
+                }
+                logoClickTimer = setTimeout(() => { logoClicks = 0; }, 1000);
+            }
+        });
+
+    </script>
+
+</body>
+</html>
