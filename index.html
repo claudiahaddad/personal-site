@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claudia Haddad</title>
     <link rel="icon" href="assets/nav-icon.png" type="image/png">
-    <!-- To load Canela: create a kit at fonts.adobe.com with Canela, then add: <link rel="stylesheet" href="https://use.typekit.net/YOUR_KIT_ID.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         * {
             margin: 0;
@@ -227,12 +228,12 @@
         }
 
         .hero-title {
-            font-family: 'Canela', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            margin-bottom: 8px;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: clamp(2.75rem, 7vw, 4.5rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.05;
+            margin-bottom: 12px;
         }
 
         .hero-subtitle-wrap {
@@ -247,10 +248,13 @@
 
         .hero-subtitle-reveal {
             display: block;
-            font-size: 1rem;
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-style: italic;
+            font-size: 1.15rem;
             color: var(--text-secondary);
             font-weight: 400;
-            margin-top: 6px;
+            margin-top: 2px;
+            letter-spacing: 0.01em;
         }
 
         .hero-subtitle-reveal .letter {
@@ -423,11 +427,11 @@
             padding-bottom: 120px;
         }
 
-        /* Experience grid (2x2 cards) */
+        /* Experience list (stacked rows) */
         .experience-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .experience-grid .timeline-item {
@@ -531,28 +535,52 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
 
-        /* Visual experience card (image + hover/click for details) */
+        /* Visual experience card: default is heading-only (transparent); hover reveals image + bullets */
         .timeline-card--visual {
             padding: 0;
             overflow: hidden;
             cursor: pointer;
+            display: grid;
+            grid-template-columns: 0px 1fr;
+            column-gap: 0;
+            background: transparent;
+            transition: grid-template-columns 0.3s ease, border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-card--visual:hover,
+        .timeline-card--visual.is-expanded {
+            grid-template-columns: 220px 1fr;
         }
 
         .timeline-card--visual .timeline-card-image {
+            grid-row: 1 / span 2;
             width: 100%;
-            aspect-ratio: 16 / 10;
+            height: 100%;
+            min-width: 0;
             overflow: hidden;
-            border-radius: 12px 12px 0 0;
+            border-radius: 12px 0 0 12px;
             background: var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .timeline-card--visual .timeline-card-image img {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .timeline-card--visual:hover .timeline-card-image,
+        .timeline-card--visual.is-expanded .timeline-card-image {
+            opacity: 1;
+        }
+
+        .timeline-card--visual .timeline-card-image > img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
         }
 
@@ -582,9 +610,8 @@
         }
 
         .timeline-card--visual .timeline-card-detail-inner {
-            padding: 0 24px 24px;
+            padding: 16px 24px 20px;
             border-top: 1px solid var(--border);
-            padding-top: 16px;
         }
 
         .timeline-card--visual .timeline-card-detail .timeline-bullets {
@@ -710,6 +737,20 @@
             display: flex;
             gap: 20px;
             align-items: flex-start;
+            padding: 4px 0;
+            transition: transform 0.25s ease;
+        }
+
+        .side-project-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .side-project-card:hover .side-project-card-icon--img img {
+            transform: scale(1.03);
+        }
+
+        .side-project-card-icon--img img {
+            transition: transform 0.25s ease;
         }
 
         .side-project-card-icon {
@@ -773,24 +814,33 @@
         .side-project-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
             color: var(--secondary);
             text-decoration: none;
             margin: 0;
-            font-weight: 700;
-            transition: transform 0.2s ease;
+            flex-shrink: 0;
+            transition: color 0.2s ease, background 0.2s ease;
         }
 
-        .side-project-link:hover {
+        .side-project-link:hover,
+        .side-project-card:hover .side-project-link {
             color: var(--text);
+            background: var(--accent-light);
         }
 
-        .side-project-link:hover svg {
+        .side-project-link:hover svg,
+        .side-project-card:hover .side-project-link svg {
             transform: translate(2px, -2px);
         }
 
         .side-project-link svg {
             display: block;
-            transition: transform 0.2s ease;
+            width: 16px;
+            height: 16px;
+            transition: transform 0.25s ease;
         }
 
         .side-project-tag {
@@ -818,23 +868,49 @@
         /* ---- Footer ---- */
         footer {
             border-top: 1px solid var(--border);
-            padding: 40px 24px;
+            padding: 40px 24px 48px;
             text-align: center;
         }
 
-        footer p {
-            font-size: 0.85rem;
+        .footer-social {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
             color: var(--text-secondary);
-        }
-
-        footer a {
-            color: var(--text);
             text-decoration: none;
-            font-weight: 500;
+            border: 1px solid var(--border);
+            background: transparent;
+            transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
         }
 
-        footer a:hover {
-            color: var(--accent);
+        .footer-social a:hover {
+            color: var(--text);
+            background: var(--bg);
+            border-color: var(--text-secondary);
+            transform: translateY(-2px);
+        }
+
+        .footer-social svg {
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+
+        .footer-built {
+            margin-top: 16px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
         }
 
         /* ---- Easter eggs ---- */
@@ -897,8 +973,33 @@
                 flex-direction: column;
             }
 
-            .experience-grid {
+            .timeline-card--visual,
+            .timeline-card--visual:hover,
+            .timeline-card--visual.is-expanded {
                 grid-template-columns: 1fr;
+            }
+
+            .timeline-card--visual .timeline-card-image {
+                grid-row: auto;
+                aspect-ratio: 16 / 9;
+                border-radius: 12px 12px 0 0;
+                opacity: 0;
+                max-height: 0;
+                transition: max-height 0.3s ease, opacity 0.3s ease;
+            }
+
+            .timeline-card--visual:hover .timeline-card-image,
+            .timeline-card--visual.is-expanded .timeline-card-image {
+                opacity: 1;
+                max-height: 260px;
+            }
+
+            .timeline-card--visual .timeline-card-heading {
+                padding: 16px 20px 12px;
+            }
+
+            .timeline-card--visual .timeline-card-detail-inner {
+                padding: 12px 20px 16px;
             }
 
             .nav-links {
@@ -1164,7 +1265,7 @@
                             <h4 class="side-project-card-title">BaseCamp 2025</h4>
                             <div class="side-project-card-desc-row">
                                 <p class="side-project-card-desc">Led and gave a workshop &quot;Building Agents People Can't Stop Talking To&quot;, with XMTP and our agent builder ecosystem.</p>
-                                <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch BaseCamp talk">→</a>
+                                <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch BaseCamp talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                             </div>
                             <span class="side-project-tag">Speaking</span>
                         </div>
@@ -1177,7 +1278,7 @@
                             <h4 class="side-project-card-title">Ethereum CC, Cannes 2025</h4>
                             <div class="side-project-card-desc-row">
                                 <p class="side-project-card-desc">Representing Base, I participated in a panel, &quot;Mass Adoption through Dapps: How to Bring More Users Onchain&quot;.</p>
-                                <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch Ethereum CC talk">→</a>
+                                <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch Ethereum CC talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                             </div>
                             <span class="side-project-tag">Speaking</span>
                         </div>
@@ -1194,7 +1295,7 @@
                         <h4 class="side-project-card-title">PennApps</h4>
                         <div class="side-project-card-desc-row">
                             <p class="side-project-card-desc">Vice Director (2018 — 2020). Led a team of 60+ members to host the largest collegiate hackathon, with 1.5k+ attendees and 30+ corporate sponsors.</p>
-                            <a href="https://pennapps.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View PennApps">→</a>
+                            <a href="https://pennapps.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View PennApps"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
                         <span class="side-project-tag">Side projects</span>
                     </div>
@@ -1207,7 +1308,7 @@
                         <h4 class="side-project-card-title">Aspiring PM</h4>
                         <div class="side-project-card-desc-row">
                             <p class="side-project-card-desc">Co-founded a publication and community to make product management more accessible. Grew to 1,000+ subscribers across LinkedIn and Substack.</p>
-                            <a href="https://aspiringpm.substack.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View Aspiring PM on Substack">→</a>
+                            <a href="https://aspiringpm.substack.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View Aspiring PM on Substack"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
                         <span class="side-project-tag">Side projects</span>
                     </div>
@@ -1220,7 +1321,7 @@
                         <h4 class="side-project-card-title">Vista</h4>
                         <div class="side-project-card-desc-row">
                             <p class="side-project-card-desc">Won 1st Place Gnosis Chain Bounty at ETHLisbon (2022) for Vista, an onchain loyalty tool.</p>
-                            <a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" class="side-project-link" aria-label="View Vista project on TAIKAI">→</a>
+                            <a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" class="side-project-link" aria-label="View Vista project on TAIKAI"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
                         <span class="side-project-tag">Side projects</span>
                     </div>
@@ -1249,11 +1350,18 @@
 
     <!-- Footer -->
     <footer>
-        <p>
-            <a href="mailto:claudhadd@gmail.com">Email</a> · 
-            <a href="https://x.com/claudhadd" target="_blank" rel="noopener noreferrer">Twitter</a> · 
-            <a href="https://linkedin.com/in/cmhaddad" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </p>
+        <div class="footer-social">
+            <a href="mailto:claudhadd@gmail.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7L12 13L21 7M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://x.com/claudhadd" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/cmhaddad" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+        </div>
+        <p class="footer-built">© 2025 Claudia Haddad</p>
     </footer>
 
     <script>
