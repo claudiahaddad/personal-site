@@ -1251,8 +1251,8 @@
     <footer>
         <p>
             <a href="mailto:claudhadd@gmail.com">Email</a> · 
-            <a href="https://x.com/claudhadd" target="_blank">Twitter</a> · 
-            <a href="https://linkedin.com/in/cmhaddad" target="_blank">LinkedIn</a>
+            <a href="https://x.com/claudhadd" target="_blank" rel="noopener noreferrer">Twitter</a> · 
+            <a href="https://linkedin.com/in/cmhaddad" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </p>
     </footer>
 
@@ -1368,13 +1368,14 @@
             const revealText = revealEl.textContent;
             const letterDelay = 0.03;
             const chars = revealText.split('');
-            revealEl.innerHTML = chars.map((char, i) => {
+            revealEl.textContent = '';
+            chars.forEach((char, i) => {
                 const span = document.createElement('span');
                 span.className = 'letter';
                 span.style.animationDelay = (i * letterDelay) + 's';
                 span.textContent = char === ' ' ? '\u00A0' : char;
-                return span.outerHTML;
-            }).join('');
+                revealEl.appendChild(span);
+            });
         }
 
         // 5 clicks on nav logo
