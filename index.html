@@ -162,7 +162,7 @@
         /* ---- Hero ---- */
         #home {
             padding-top: 80px;
-            padding-bottom: 48px;
+            padding-bottom: 96px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -335,7 +335,7 @@
         /* ---- About ---- */
         #about {
             padding-top: 80px;
-            padding-bottom: 100px;
+            padding-bottom: 96px;
         }
 
         .section-label {
@@ -348,7 +348,7 @@
         }
 
         .section-title {
-            font-size: 2rem;
+            font-size: clamp(1.6rem, 4vw, 2rem);
             font-weight: 700;
             letter-spacing: -0.02em;
             margin-bottom: 32px;
@@ -404,9 +404,9 @@
         }
 
         .detail-card h4 {
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             color: var(--text-secondary);
             margin-bottom: 6px;
             font-weight: 600;
@@ -420,7 +420,7 @@
         /* ---- Experience & Other ---- */
         #experience {
             padding-top: 80px;
-            padding-bottom: 120px;
+            padding-bottom: 96px;
         }
 
         /* Experience list (stacked rows) */
@@ -489,7 +489,7 @@
         .timeline-dot.hackathon { border-color: #444; }
 
         .timeline-date {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
             font-weight: 500;
             margin-bottom: 6px;
@@ -619,10 +619,10 @@
         }
 
         .timeline-company {
-            font-size: 0.78rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.08em;
             color: var(--accent);
             margin-bottom: 4px;
         }
@@ -635,7 +635,7 @@
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 12px;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .timeline-bullets {
@@ -693,7 +693,7 @@
         }
 
         .experience-other-block p {
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.7;
             margin: 0;
@@ -706,7 +706,7 @@
         }
 
         .experience-other-list li {
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 6px;
@@ -784,7 +784,7 @@
             font-weight: 700;
             color: var(--text);
             margin: 0 0 8px 0;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .side-project-card-desc-row {
@@ -801,7 +801,7 @@
         }
 
         .side-project-card-desc {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 8px;
@@ -1030,9 +1030,7 @@
                 height: 14px;
             }
 
-            .section-title {
-                font-size: 1.6rem;
-            }
+            /* .section-title handled via clamp() in base rule */
 
             .hero-blurb-row {
                 flex-direction: column;
