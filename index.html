@@ -423,11 +423,11 @@
             padding-bottom: 120px;
         }
 
-        /* Experience grid (2x2 cards) */
+        /* Experience list (stacked rows) */
         .experience-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .experience-grid .timeline-item {
@@ -531,28 +531,52 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
         }
 
-        /* Visual experience card (image + hover/click for details) */
+        /* Visual experience card: default is heading-only (transparent); hover reveals image + bullets */
         .timeline-card--visual {
             padding: 0;
             overflow: hidden;
             cursor: pointer;
+            display: grid;
+            grid-template-columns: 0px 1fr;
+            column-gap: 0;
+            background: transparent;
+            transition: grid-template-columns 0.3s ease, border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .timeline-card--visual:hover,
+        .timeline-card--visual.is-expanded {
+            grid-template-columns: 220px 1fr;
         }
 
         .timeline-card--visual .timeline-card-image {
+            grid-row: 1 / span 2;
             width: 100%;
-            aspect-ratio: 16 / 10;
+            height: 100%;
+            min-width: 0;
             overflow: hidden;
-            border-radius: 12px 12px 0 0;
+            border-radius: 12px 0 0 12px;
             background: var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .timeline-card--visual .timeline-card-image img {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .timeline-card--visual:hover .timeline-card-image,
+        .timeline-card--visual.is-expanded .timeline-card-image {
+            opacity: 1;
+        }
+
+        .timeline-card--visual .timeline-card-image > img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             display: block;
         }
 
@@ -582,9 +606,8 @@
         }
 
         .timeline-card--visual .timeline-card-detail-inner {
-            padding: 0 24px 24px;
+            padding: 16px 24px 20px;
             border-top: 1px solid var(--border);
-            padding-top: 16px;
         }
 
         .timeline-card--visual .timeline-card-detail .timeline-bullets {
@@ -897,8 +920,33 @@
                 flex-direction: column;
             }
 
-            .experience-grid {
+            .timeline-card--visual,
+            .timeline-card--visual:hover,
+            .timeline-card--visual.is-expanded {
                 grid-template-columns: 1fr;
+            }
+
+            .timeline-card--visual .timeline-card-image {
+                grid-row: auto;
+                aspect-ratio: 16 / 9;
+                border-radius: 12px 12px 0 0;
+                opacity: 0;
+                max-height: 0;
+                transition: max-height 0.3s ease, opacity 0.3s ease;
+            }
+
+            .timeline-card--visual:hover .timeline-card-image,
+            .timeline-card--visual.is-expanded .timeline-card-image {
+                opacity: 1;
+                max-height: 260px;
+            }
+
+            .timeline-card--visual .timeline-card-heading {
+                padding: 16px 20px 12px;
+            }
+
+            .timeline-card--visual .timeline-card-detail-inner {
+                padding: 12px 20px 16px;
             }
 
             .nav-links {
