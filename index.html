@@ -537,7 +537,7 @@
             overflow: hidden;
             cursor: pointer;
             display: grid;
-            grid-template-columns: 0fr 1fr;
+            grid-template-columns: 0px 1fr;
             column-gap: 0;
             background: transparent;
             transition: grid-template-columns 0.3s ease, border-color 0.2s, box-shadow 0.2s;
@@ -563,12 +563,17 @@
             transition: opacity 0.3s ease;
         }
 
+        .timeline-card--visual .timeline-card-image img {
+            min-width: 0;
+            max-width: 100%;
+        }
+
         .timeline-card--visual:hover .timeline-card-image,
         .timeline-card--visual.is-expanded .timeline-card-image {
             opacity: 1;
         }
 
-        .timeline-card--visual .timeline-card-image img {
+        .timeline-card--visual .timeline-card-image > img {
             width: 100%;
             height: 100%;
             object-fit: cover;
