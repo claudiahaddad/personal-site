@@ -23,7 +23,7 @@
             --secondary-light: #7A8F87;
             --text: #1a1a2e;
             --text-secondary: #555;
-            --bg: #fffef9;
+            --bg: #ffffff;
             --white: #ffffff;
             --border: #e5e5e5;
         }
@@ -47,7 +47,7 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(255, 254, 249, 0.6);
+            background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             transition: box-shadow 0.3s;
@@ -107,9 +107,10 @@
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-secondary);
+            color: var(--text);
             font-size: 0.9rem;
             font-weight: 500;
+            text-transform: lowercase;
             transition: color 0.2s;
             position: relative;
         }
@@ -421,6 +422,19 @@
         #experience {
             padding-top: 80px;
             padding-bottom: 96px;
+        }
+
+        /* ---- Likes ---- */
+        #likes {
+            padding-top: 80px;
+            padding-bottom: 96px;
+        }
+
+        .likes-text p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
         }
 
         /* Experience list (stacked rows) */
@@ -1004,7 +1018,7 @@
                 top: 60px;
                 left: 0;
                 right: 0;
-                background: rgba(255, 254, 249, 0.92);
+                background: rgba(255, 255, 255, 0.92);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
                 padding: 24px;
@@ -1061,8 +1075,9 @@
                 <img src="assets/nav-icon.png" alt="">
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#experience">experience</a></li>
+                <li><a href="#likes">likes</a></li>
             </ul>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                 <span></span>
@@ -1268,6 +1283,30 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <div class="floral-divider" aria-hidden="true">
+        <svg viewBox="0 0 420 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4 L14 12 L12 20 L10 12 Z M4 12 L12 10 L20 12 L12 14 Z"/>
+            <line x1="28" y1="10" x2="160" y2="10" stroke-width="0.75"/>
+            <line x1="28" y1="14" x2="160" y2="14" stroke-width="0.75"/>
+            <rect x="164" y="9" width="3" height="6" fill="currentColor"/>
+            <circle cx="210" cy="12" r="2.8" fill="currentColor"/>
+            <path d="M216 12 L212.41 11.35 L215.2 9.6 L211.77 10.23 L213 6.8 L210.65 7.75 L210 6 L209.35 7.75 L207 6.8 L208.23 10.23 L204.8 9.6 L207.59 11.35 L204 12 L207.59 12.65 L204.8 14.4 L208.23 13.77 L207 17.2 L209.35 16.25 L210 18 L210.65 16.25 L213 17.2 L211.77 13.77 L215.2 14.4 L212.41 12.65 Z" fill="currentColor"/>
+            <rect x="256" y="9" width="3" height="6" fill="currentColor"/>
+            <line x1="264" y1="10" x2="396" y2="10" stroke-width="0.75"/>
+            <line x1="264" y1="14" x2="396" y2="14" stroke-width="0.75"/>
+            <path d="M408 4 L410 12 L408 20 L406 12 Z M400 12 L408 10 L416 12 L408 14 Z"/>
+        </svg>
+    </div>
+
+    <!-- Likes -->
+    <section id="likes">
+        <p class="section-label">Likes</p>
+        <h2 class="section-title">A few things I love</h2>
+        <div class="likes-text">
+            <p>Coming soon — a running list of books, tools, essays, and places I keep coming back to.</p>
         </div>
     </section>
 
