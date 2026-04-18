@@ -437,6 +437,35 @@
             margin-bottom: 16px;
         }
 
+        .likes-groups {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .likes-group h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+        }
+
+        .likes-group ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .likes-group li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* Experience list (stacked rows) */
         .experience-grid {
             display: flex;
@@ -1305,8 +1334,24 @@
     <section id="likes">
         <p class="section-label">Likes</p>
         <h2 class="section-title">A few things I love</h2>
-        <div class="likes-text">
-            <p>Coming soon — a running list of books, tools, essays, and places I keep coming back to.</p>
+        <div class="likes-groups">
+            <div class="likes-group">
+                <h3>Wine</h3>
+                <ul>
+                    <li>Per Se Inseparable Malbec, Mendoza 2023</li>
+                    <li>Scribe White Pressed Pinot Noir, 2024</li>
+                    <li>Yangchon Chungju</li>
+                    <li>Blanco Nieva Verdejo, 2023</li>
+                </ul>
+            </div>
+            <div class="likes-group">
+                <h3>Coffee Shops</h3>
+                <ul>
+                    <li>Interlude</li>
+                    <li>Davelle</li>
+                    <li>Kabin</li>
+                </ul>
+            </div>
         </div>
     </section>
 
