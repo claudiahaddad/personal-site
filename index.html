@@ -739,17 +739,21 @@
         }
 
         .experience-other {
-            margin-top: 56px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
+            margin-top: 0;
         }
 
-        .experience-other-block {
-            margin-bottom: 24px;
+        .experience-sublabel {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 48px;
+            margin-bottom: 20px;
         }
 
-        .experience-other-block:last-child {
-            margin-bottom: 0;
+        #experience .experience-sublabel:first-of-type {
+            margin-top: 24px;
         }
 
         .experience-other-list {
@@ -1192,6 +1196,7 @@
     <section id="experience">
         <p class="section-label">Experience</p>
 
+        <p class="experience-sublabel">Work experience</p>
         <div class="experience-grid">
 
             <!-- Base PM II (visual card) -->
@@ -1244,40 +1249,100 @@
         </div>
 
         <div class="experience-other">
-            <p class="section-label">OTHER THINGS I'VE DONE</p>
+            <p class="experience-sublabel">Projects</p>
 
-            <div class="experience-other-block">
-                <div class="side-project-cards">
-                    <div class="side-project-card">
-                        <div class="side-project-card-icon side-project-card-icon--img">
-                            <img src="assets/basecamp.png" alt="">
+            <div class="side-project-cards side-project-cards--no-icon">
+                <div class="side-project-card">
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">USDC Rewards</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Launched onchain USDC earning in the Base app, letting users earn yield directly on their balances.</p>
+                            <a href="https://x.com/baseapp/status/1859286084535906744?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View USDC Rewards"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
-                        <div class="side-project-card-body">
-                            <h4 class="side-project-card-title">BaseCamp 2025</h4>
-                            <div class="side-project-card-desc-row">
-                                <p class="side-project-card-desc">Led and gave a workshop &quot;Building Agents People Can't Stop Talking To&quot;, with XMTP and our agent builder ecosystem.</p>
-                                <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch BaseCamp talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                            </div>
-                            <span class="side-project-tag">Speaking</span>
-                        </div>
+
                     </div>
-                    <div class="side-project-card">
-                        <div class="side-project-card-icon side-project-card-icon--img">
-                            <img src="assets/ethcc.png" alt="">
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Vista</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">ETHLisbon 2022 hackathon project — a lightweight onchain identity and wallet experience.</p>
+                            <a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" class="side-project-link" aria-label="View Vista"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
-                        <div class="side-project-card-body">
-                            <h4 class="side-project-card-title">Ethereum CC, Cannes 2025</h4>
-                            <div class="side-project-card-desc-row">
-                                <p class="side-project-card-desc">Representing Base, I participated in a panel, &quot;Mass Adoption through Dapps: How to Bring More Users Onchain&quot;.</p>
-                                <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch Ethereum CC talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                            </div>
-                            <span class="side-project-tag">Speaking</span>
+
+                    </div>
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Onchain Summer</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Contributed to Base's Onchain Summer campaign, bringing a wave of new consumer apps onchain.</p>
+                            <a href="https://x.com/baseapp/status/1833571003999641804?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View Onchain Summer"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
+
+                    </div>
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Advanced Trade</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Helped bring Coinbase's Advanced Trade product to market, enabling a seamless migration off Coinbase Pro.</p>
+                            <a href="https://x.com/coinbase/status/1499472116122488833?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View Advanced Trade"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Onchain Token Attestations</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Shipped onchain token attestations on Base, giving apps a way to verify token metadata directly onchain.</p>
+                            <a href="https://x.com/claudhadd/status/1891945100705472614?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View Onchain Token Attestations"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Bagz</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">A consumer onchain experiment exploring new ways to surface and share wallet collectibles.</p>
+                            <a href="https://x.com/mochikuan/status/1719102614078402706/photo/1" target="_blank" rel="noopener" class="side-project-link" aria-label="View Bagz"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
+            <p class="experience-sublabel">Initiatives</p>
+
             <div class="side-project-cards">
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/basecamp.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">BaseCamp 2025</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Led and gave a workshop &quot;Building Agents People Can't Stop Talking To&quot;, with XMTP and our agent builder ecosystem.</p>
+                            <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch BaseCamp talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                        <span class="side-project-tag">Speaking</span>
+                    </div>
+                </div>
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/ethcc.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Ethereum CC, Cannes 2025</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Representing Base, I participated in a panel, &quot;Mass Adoption through Dapps: How to Bring More Users Onchain&quot;.</p>
+                            <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch Ethereum CC talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                        <span class="side-project-tag">Speaking</span>
+                    </div>
+                </div>
                 <div class="side-project-card">
                     <div class="side-project-card-icon side-project-card-icon--img">
                         <img src="assets/pennapps.png" alt="">
@@ -1288,7 +1353,7 @@
                             <p class="side-project-card-desc">Vice Director (2018 — 2020). Led a team of 60+ members to host the largest collegiate hackathon, with 1.5k+ attendees and 30+ corporate sponsors.</p>
                             <a href="https://pennapps.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View PennApps"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
-                        <span class="side-project-tag">Projects</span>
+                        <span class="side-project-tag">Community</span>
                     </div>
                 </div>
                 <div class="side-project-card">
@@ -1301,21 +1366,9 @@
                             <p class="side-project-card-desc">Co-founded a publication and community to make product management more accessible. Grew to 1,000+ subscribers across LinkedIn and Substack.</p>
                             <a href="https://aspiringpm.substack.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View Aspiring PM on Substack"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
                         </div>
-                        <span class="side-project-tag">Projects</span>
+                        <span class="side-project-tag">Community</span>
                     </div>
                 </div>
-            </div>
-
-            <div class="experience-other-block">
-                <p class="section-label">Projects</p>
-                <ul class="experience-other-list">
-                    <li><a href="https://x.com/baseapp/status/1859286084535906744?s=20" target="_blank" rel="noopener">USDC Rewards</a></li>
-                    <li><a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener">Vista</a></li>
-                    <li><a href="https://x.com/baseapp/status/1833571003999641804?s=20" target="_blank" rel="noopener">Onchain Summer</a></li>
-                    <li><a href="https://x.com/coinbase/status/1499472116122488833?s=20" target="_blank" rel="noopener">Advanced Trade</a></li>
-                    <li><a href="https://x.com/claudhadd/status/1891945100705472614?s=20" target="_blank" rel="noopener">Onchain Token Attestations</a></li>
-                    <li><a href="https://x.com/mochikuan/status/1719102614078402706/photo/1" target="_blank" rel="noopener">Bagz</a></li>
-                </ul>
             </div>
         </div>
     </section>
