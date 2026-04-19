@@ -786,6 +786,12 @@
             gap: 32px;
         }
 
+        .side-project-cards--two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px 40px;
+        }
+
         .side-project-card {
             display: flex;
             gap: 20px;
@@ -1022,6 +1028,11 @@
 
         /* ---- Responsive ---- */
         @media (max-width: 700px) {
+            .side-project-cards--two-col {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
             .about-row {
                 flex-direction: column;
             }
@@ -1251,7 +1262,7 @@
         <div class="experience-other">
             <p class="experience-sublabel">Projects</p>
 
-            <div class="side-project-cards side-project-cards--no-icon">
+            <div class="side-project-cards side-project-cards--no-icon side-project-cards--two-col">
                 <div class="side-project-card">
                     <div class="side-project-card-body">
                         <h4 class="side-project-card-title">USDC Rewards</h4>
