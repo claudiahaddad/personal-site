@@ -743,16 +743,16 @@
         }
 
         .experience-sublabel {
-            font-size: 0.85rem;
+            font-size: 0.72rem;
             font-weight: 600;
             color: var(--secondary);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 48px;
-            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+            margin-top: 40px;
+            margin-bottom: 16px;
         }
 
-        #experience .experience-sublabel:first-of-type {
+        #experience > .experience-sublabel:first-of-type {
             margin-top: 24px;
         }
 
@@ -784,6 +784,12 @@
             display: flex;
             flex-direction: column;
             gap: 32px;
+        }
+
+        .side-project-cards--two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px 40px;
         }
 
         .side-project-card {
@@ -1022,6 +1028,11 @@
 
         /* ---- Responsive ---- */
         @media (max-width: 700px) {
+            .side-project-cards--two-col {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
             .about-row {
                 flex-direction: column;
             }
@@ -1251,7 +1262,7 @@
         <div class="experience-other">
             <p class="experience-sublabel">Projects</p>
 
-            <div class="side-project-cards side-project-cards--no-icon">
+            <div class="side-project-cards side-project-cards--no-icon side-project-cards--two-col">
                 <div class="side-project-card">
                     <div class="side-project-card-body">
                         <h4 class="side-project-card-title">USDC Rewards</h4>
