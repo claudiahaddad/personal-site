@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claudia Haddad</title>
+    <title>Experience · Claudia Haddad</title>
     <link rel="icon" href="assets/nav-icon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -423,7 +423,7 @@
 
         /* ---- Experience & Other ---- */
         #experience {
-            padding-top: 40px;
+            padding-top: 96px;
             padding-bottom: 48px;
         }
 
@@ -1202,8 +1202,8 @@
                 <span class="nav-name">Claudia Haddad</span>
             </a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/" class="active">about</a></li>
-                <li><a href="experience.html">experience</a></li>
+                <li><a href="/">about</a></li>
+                <li><a href="experience.html" class="active">experience</a></li>
             </ul>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                 <span></span>
@@ -1213,61 +1213,124 @@
         </div>
     </nav>
 
-    <!-- About -->
-    <section id="about">
-        <p class="section-label">About</p>
-        <div class="about-grid">
-            <div class="about-row">
-                <img src="assets/claudia-photo.png" alt="Claudia Haddad" class="about-photo" width="220">
-                <div class="about-text">
-                <p>I'm drawn to early, ambiguous spaces, and to the challenge of turning emerging primitives into products people actually understand and use.</p>
-                <p>I started my career as an engineer and still love building—whether that's shipping PRs, prototyping ideas, or organizing hackathons and helping others bring their ideas to life.</p>
-                <p>Across my work, I've launched 0→1 consumer products, built developer communities, and scaled products to millions of users.</p>
-                <p>I studied Cognitive Science at the University of Pennsylvania, with a focus on decision-making and consumer psychology. I think a lot about behavior, trust, and how to make complex systems feel simple, intuitive, and worth coming back to.</p>
-                <p>Outside of work, I spend a lot of time reading, planning trips to interesting places, and finding good coffee shops.</p>
+    <!-- Experience -->
+    <section id="experience">
+        <p class="section-label">Experience</p>
+
+        <p class="experience-sublabel">Work experience</p>
+        <div class="experience-grid">
+
+            <!-- Base PM II (visual card) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card timeline-card--visual is-expanded">
+                    <div class="timeline-card-image">
+                        <img src="assets/wallet.svg" alt="Coinbase">
+                    </div>
+                    <div class="timeline-card-heading">
+                        <p class="timeline-company">Coinbase · Product Lead</p>
+                        <div class="timeline-role-row">
+                            <span class="timeline-date">2021 — Present</span>
+                        </div>
+                    </div>
+                    <div class="timeline-card-detail">
+                        <div class="timeline-card-detail-inner">
+                            <p class="timeline-summary">Focused on turning emerging crypto and AI primitives into scalable, consumer-ready products across trading, wallet, and onchain ecosystems.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Meta (visual card) -->
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card timeline-card--visual" data-expandable>
+                    <div class="timeline-card-image">
+                        <img src="assets/meta.png" alt="Meta">
+                    </div>
+                    <div class="timeline-card-heading">
+                        <p class="timeline-company">Meta · Software Engineer</p>
+                        <div class="timeline-role-row">
+                            <span class="timeline-date">2021</span>
+                        </div>
+                    </div>
+                    <div class="timeline-card-detail">
+                        <div class="timeline-card-detail-inner">
+                            <p class="timeline-summary">Interned 3x and joined the News team to improve access to trusted information. Built new discovery modules, ran A/B tests as a full-stack engineer using React, JavaScript, Hack, PHP, and GraphQL.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="likes-cards">
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5V4.5z"/>
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    </svg>
-                    <h3>Books</h3>
+
+        <div class="experience-other">
+            <p class="experience-sublabel">Projects</p>
+
+            <ul class="projects-list">
+                <li>USDC Rewards<a href="https://x.com/baseapp/status/1859286084535906744?s=20" target="_blank" rel="noopener" aria-label="View USDC Rewards"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Vista<a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" aria-label="View Vista"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Onchain Summer<a href="https://x.com/baseapp/status/1833571003999641804?s=20" target="_blank" rel="noopener" aria-label="View Onchain Summer"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Advanced Trade<a href="https://x.com/coinbase/status/1499472116122488833?s=20" target="_blank" rel="noopener" aria-label="View Advanced Trade"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Onchain Token Attestations<a href="https://x.com/claudhadd/status/1891945100705472614?s=20" target="_blank" rel="noopener" aria-label="View Onchain Token Attestations"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            </ul>
+
+            <p class="experience-sublabel">Initiatives</p>
+
+            <div class="side-project-cards">
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/pennapps.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">PennApps</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Vice Director (2018 — 2020). Led a team of 60+ members to host the largest collegiate hackathon, with 1.5k+ attendees and 30+ corporate sponsors.</p>
+                            <a href="https://pennapps.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View PennApps"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                        <span class="side-project-tag">Community</span>
+                    </div>
                 </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Man and His Symbols</span></span><span class="like-item"><span class="t">Principles</span></span><span class="like-item"><span class="t">The Glass Castle</span></span><span class="like-item"><span class="t">Jane Eyre</span></span><span class="like-item"><span class="t">The Prince</span></span><span class="like-item"><span class="t">The Sovereign Individual</span></span><span class="like-item"><span class="t">The Master and His Emissary</span></span><span class="like-item"><span class="t">The Four Agreements</span></span><span class="like-item"><span class="t">Subliminal: How Your Unconscious Mind Rules</span></span>
-                </p>
-            </article>
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3z"/>
-                        <path d="M12 15v6"/>
-                        <path d="M9 21h6"/>
-                    </svg>
-                    <h3>Wine</h3>
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/aspiringpm.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Aspiring PM</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Co-founded a publication and community to make product management more accessible. Grew to 1,000+ subscribers across LinkedIn and Substack.</p>
+                            <a href="https://aspiringpm.substack.com/" target="_blank" rel="noopener" class="side-project-link" aria-label="View Aspiring PM on Substack"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                        <span class="side-project-tag">Community</span>
+                    </div>
                 </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Per Se Inseparable Malbec</span> <span class="a">— Mendoza 2023</span></span><span class="like-item"><span class="t">Scribe White Pressed Pinot Noir</span> <span class="a">— 2024</span></span><span class="like-item"><span class="t">Yangchon Chungju</span></span><span class="like-item"><span class="t">Blanco Nieva Verdejo</span> <span class="a">— 2023</span></span>
-                </p>
-            </article>
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M3 8h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8z"/>
-                        <path d="M17 10h2a3 3 0 0 1 0 6h-2"/>
-                        <path d="M7 3c0 1.5 1 1.5 1 3"/>
-                        <path d="M11 3c0 1.5 1 1.5 1 3"/>
-                    </svg>
-                    <h3>Coffee Shops</h3>
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/basecamp.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">BaseCamp 2025</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Led and gave a workshop &quot;Building Agents People Can't Stop Talking To&quot;, with XMTP and our agent builder ecosystem.</p>
+                            <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch BaseCamp talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                        <span class="side-project-tag">Speaking</span>
+                    </div>
                 </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Interlude</span></span><span class="like-item"><span class="t">Davelle</span></span><span class="like-item"><span class="t">Kabin</span></span><span class="like-item"><span class="t">Composition Coffee</span></span>
-                </p>
-            </article>
+                <div class="side-project-card">
+                    <div class="side-project-card-icon side-project-card-icon--img">
+                        <img src="assets/ethcc.png" alt="">
+                    </div>
+                    <div class="side-project-card-body">
+                        <h4 class="side-project-card-title">Ethereum CC, Cannes 2025</h4>
+                        <div class="side-project-card-desc-row">
+                            <p class="side-project-card-desc">Representing Base, I participated in a panel, &quot;Mass Adoption through Dapps: How to Bring More Users Onchain&quot;.</p>
+                            <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch Ethereum CC talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </div>
+                        <span class="side-project-tag">Speaking</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
