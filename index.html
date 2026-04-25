@@ -1311,26 +1311,6 @@
             nav.classList.toggle('scrolled', window.scrollY > 10);
         });
 
-        // Active nav link on scroll
-        const sections = document.querySelectorAll('section');
-        const navItems = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const top = section.offsetTop - 100;
-                if (window.scrollY >= top) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === '#' + current) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
         // Timeline animation on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1416,17 +1396,22 @@
         let logoClicks = 0;
         let logoClickTimer;
         navLogo.addEventListener('click', (e) => {
-            if (e.target.closest('a') && e.currentTarget.href?.endsWith('#home')) {
-                logoClicks++;
-                clearTimeout(logoClickTimer);
-                if (logoClicks >= 5) {
-                    navLogo.classList.add('spin');
-                    setTimeout(() => navLogo.classList.remove('spin'), 600);
-                    triggerEasterEgg();
-                    logoClicks = 0;
-                }
-                logoClickTimer = setTimeout(() => { logoClicks = 0; }, 1000);
+            e.preventDefault();
+            logoClicks++;
+            clearTimeout(logoClickTimer);
+            if (logoClicks >= 5) {
+                navLogo.classList.add('spin');
+                setTimeout(() => navLogo.classList.remove('spin'), 600);
+                triggerEasterEgg();
+                logoClicks = 0;
+                return;
             }
+            logoClickTimer = setTimeout(() => {
+                if (logoClicks < 5) {
+                    window.location.href = navLogo.getAttribute('href');
+                }
+                logoClicks = 0;
+            }, 350);
         });
 
     </script>
