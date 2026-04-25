@@ -421,20 +421,12 @@
             padding-bottom: 48px;
         }
 
-        /* ---- Likes ---- */
-        #likes {
-            padding-top: 40px;
-            padding-bottom: 48px;
-        }
-
-        .likes-label {
-            margin-bottom: 24px;
-        }
-
+        /* ---- Likes (within About) ---- */
         .likes-cards {
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
+            margin-top: 32px;
         }
 
         .likes-card {
@@ -937,6 +929,45 @@
             transition: transform 0.25s ease;
         }
 
+        /* Compact list for Projects */
+        .projects-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .projects-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .projects-list li a {
+            color: var(--secondary);
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .projects-list li a:hover {
+            color: var(--text);
+        }
+
+        .projects-list li a:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        .projects-list li a svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.25s ease;
+        }
+
         .side-project-tag {
             display: inline-block;
             font-size: 0.7rem;
@@ -1166,7 +1197,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#about">about</a></li>
                 <li><a href="#experience">experience</a></li>
-                <li><a href="#likes">likes</a></li>
             </ul>
             <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                 <span></span>
@@ -1222,6 +1252,47 @@
                 <p>Outside of work, I spend a lot of time reading, planning trips to interesting places, and finding good coffee shops.</p>
                 </div>
             </div>
+        </div>
+        <div class="likes-cards">
+            <article class="likes-card">
+                <div class="likes-card-head">
+                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5V4.5z"/>
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                    </svg>
+                    <h3>Books</h3>
+                </div>
+                <p class="likes-items">
+                    <span class="like-item"><span class="t">Man and His Symbols</span></span><span class="like-item"><span class="t">Principles</span></span><span class="like-item"><span class="t">The Glass Castle</span></span><span class="like-item"><span class="t">Jane Eyre</span></span><span class="like-item"><span class="t">The Prince</span></span><span class="like-item"><span class="t">The Sovereign Individual</span></span><span class="like-item"><span class="t">The Master and His Emissary</span></span><span class="like-item"><span class="t">The Four Agreements</span></span><span class="like-item"><span class="t">Subliminal: How Your Unconscious Mind Rules</span></span>
+                </p>
+            </article>
+            <article class="likes-card">
+                <div class="likes-card-head">
+                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3z"/>
+                        <path d="M12 15v6"/>
+                        <path d="M9 21h6"/>
+                    </svg>
+                    <h3>Wine</h3>
+                </div>
+                <p class="likes-items">
+                    <span class="like-item"><span class="t">Per Se Inseparable Malbec</span> <span class="a">— Mendoza 2023</span></span><span class="like-item"><span class="t">Scribe White Pressed Pinot Noir</span> <span class="a">— 2024</span></span><span class="like-item"><span class="t">Yangchon Chungju</span></span><span class="like-item"><span class="t">Blanco Nieva Verdejo</span> <span class="a">— 2023</span></span>
+                </p>
+            </article>
+            <article class="likes-card">
+                <div class="likes-card-head">
+                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 8h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8z"/>
+                        <path d="M17 10h2a3 3 0 0 1 0 6h-2"/>
+                        <path d="M7 3c0 1.5 1 1.5 1 3"/>
+                        <path d="M11 3c0 1.5 1 1.5 1 3"/>
+                    </svg>
+                    <h3>Coffee Shops</h3>
+                </div>
+                <p class="likes-items">
+                    <span class="like-item"><span class="t">Interlude</span></span><span class="like-item"><span class="t">Davelle</span></span><span class="like-item"><span class="t">Kabin</span></span><span class="like-item"><span class="t">Composition Coffee</span></span>
+                </p>
+            </article>
         </div>
     </section>
 
@@ -1299,58 +1370,13 @@
         <div class="experience-other">
             <p class="experience-sublabel">Projects</p>
 
-            <div class="side-project-cards side-project-cards--no-icon side-project-cards--two-col">
-                <div class="side-project-card">
-                    <div class="side-project-card-body">
-                        <h4 class="side-project-card-title">USDC Rewards</h4>
-                        <div class="side-project-card-desc-row">
-                            <p class="side-project-card-desc">Launched onchain USDC earning in the Base app, letting users earn yield directly on their balances.</p>
-                            <a href="https://x.com/baseapp/status/1859286084535906744?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View USDC Rewards"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="side-project-card">
-                    <div class="side-project-card-body">
-                        <h4 class="side-project-card-title">Vista</h4>
-                        <div class="side-project-card-desc-row">
-                            <p class="side-project-card-desc">ETHLisbon 2022 hackathon project — onchain community management and loyalty.</p>
-                            <a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" class="side-project-link" aria-label="View Vista"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="side-project-card">
-                    <div class="side-project-card-body">
-                        <h4 class="side-project-card-title">Onchain Summer</h4>
-                        <div class="side-project-card-desc-row">
-                            <p class="side-project-card-desc">Led gamification efforts for Onchain Summer, driving 6x YoY growth with 1M+ activated players.</p>
-                            <a href="https://x.com/baseapp/status/1833571003999641804?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View Onchain Summer"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="side-project-card">
-                    <div class="side-project-card-body">
-                        <h4 class="side-project-card-title">Advanced Trade</h4>
-                        <div class="side-project-card-desc-row">
-                            <p class="side-project-card-desc">Brought Coinbase's Advanced Trade product to market, enabling a seamless migration off Coinbase Pro.</p>
-                            <a href="https://x.com/coinbase/status/1499472116122488833?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View Advanced Trade"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="side-project-card">
-                    <div class="side-project-card-body">
-                        <h4 class="side-project-card-title">Onchain Token Attestations</h4>
-                        <div class="side-project-card-desc-row">
-                            <p class="side-project-card-desc">Launched a decentralized, transparent way for tokens to update their metadata onchain.</p>
-                            <a href="https://x.com/claudhadd/status/1891945100705472614?s=20" target="_blank" rel="noopener" class="side-project-link" aria-label="View Onchain Token Attestations"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            <ul class="projects-list">
+                <li>USDC Rewards<a href="https://x.com/baseapp/status/1859286084535906744?s=20" target="_blank" rel="noopener" aria-label="View USDC Rewards"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Vista<a href="https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9t0g7cc111341001xa0p90y6xf/idea" target="_blank" rel="noopener" aria-label="View Vista"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Onchain Summer<a href="https://x.com/baseapp/status/1833571003999641804?s=20" target="_blank" rel="noopener" aria-label="View Onchain Summer"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Advanced Trade<a href="https://x.com/coinbase/status/1499472116122488833?s=20" target="_blank" rel="noopener" aria-label="View Advanced Trade"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+                <li>Onchain Token Attestations<a href="https://x.com/claudhadd/status/1891945100705472614?s=20" target="_blank" rel="noopener" aria-label="View Onchain Token Attestations"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+            </ul>
 
             <p class="experience-sublabel">Initiatives</p>
 
@@ -1408,67 +1434,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <div class="floral-divider" aria-hidden="true">
-        <svg viewBox="0 0 420 24" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 4 L14 12 L12 20 L10 12 Z M4 12 L12 10 L20 12 L12 14 Z"/>
-            <line x1="28" y1="10" x2="160" y2="10" stroke-width="0.75"/>
-            <line x1="28" y1="14" x2="160" y2="14" stroke-width="0.75"/>
-            <rect x="164" y="9" width="3" height="6" fill="currentColor"/>
-            <circle cx="210" cy="12" r="2.8" fill="currentColor"/>
-            <path d="M216 12 L212.41 11.35 L215.2 9.6 L211.77 10.23 L213 6.8 L210.65 7.75 L210 6 L209.35 7.75 L207 6.8 L208.23 10.23 L204.8 9.6 L207.59 11.35 L204 12 L207.59 12.65 L204.8 14.4 L208.23 13.77 L207 17.2 L209.35 16.25 L210 18 L210.65 16.25 L213 17.2 L211.77 13.77 L215.2 14.4 L212.41 12.65 Z" fill="currentColor"/>
-            <rect x="256" y="9" width="3" height="6" fill="currentColor"/>
-            <line x1="264" y1="10" x2="396" y2="10" stroke-width="0.75"/>
-            <line x1="264" y1="14" x2="396" y2="14" stroke-width="0.75"/>
-            <path d="M408 4 L410 12 L408 20 L406 12 Z M400 12 L408 10 L416 12 L408 14 Z"/>
-        </svg>
-    </div>
-
-    <!-- Likes -->
-    <section id="likes">
-        <p class="section-label likes-label">Likes</p>
-        <div class="likes-cards">
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5A2.5 2.5 0 0 0 4 22.5V4.5z"/>
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    </svg>
-                    <h3>Books</h3>
-                </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Man and His Symbols</span></span><span class="like-item"><span class="t">Principles</span></span><span class="like-item"><span class="t">The Glass Castle</span></span><span class="like-item"><span class="t">Jane Eyre</span></span><span class="like-item"><span class="t">The Prince</span></span><span class="like-item"><span class="t">The Sovereign Individual</span></span><span class="like-item"><span class="t">The Master and His Emissary</span></span><span class="like-item"><span class="t">The Four Agreements</span></span><span class="like-item"><span class="t">Subliminal: How Your Unconscious Mind Rules</span></span>
-                </p>
-            </article>
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3z"/>
-                        <path d="M12 15v6"/>
-                        <path d="M9 21h6"/>
-                    </svg>
-                    <h3>Wine</h3>
-                </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Per Se Inseparable Malbec</span> <span class="a">— Mendoza 2023</span></span><span class="like-item"><span class="t">Scribe White Pressed Pinot Noir</span> <span class="a">— 2024</span></span><span class="like-item"><span class="t">Yangchon Chungju</span></span><span class="like-item"><span class="t">Blanco Nieva Verdejo</span> <span class="a">— 2023</span></span>
-                </p>
-            </article>
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M3 8h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8z"/>
-                        <path d="M17 10h2a3 3 0 0 1 0 6h-2"/>
-                        <path d="M7 3c0 1.5 1 1.5 1 3"/>
-                        <path d="M11 3c0 1.5 1 1.5 1 3"/>
-                    </svg>
-                    <h3>Coffee Shops</h3>
-                </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Interlude</span></span><span class="like-item"><span class="t">Davelle</span></span><span class="like-item"><span class="t">Kabin</span></span><span class="like-item"><span class="t">Composition Coffee</span></span>
-                </p>
-            </article>
         </div>
     </section>
 
