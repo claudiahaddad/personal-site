@@ -996,6 +996,77 @@
             background: var(--secondary);
         }
 
+        /* ---- Speaking List ---- */
+        .speaking-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .speaking-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .speaking-list-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .speaking-list-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .speaking-list-title:hover {
+            color: var(--secondary);
+        }
+
+        .speaking-list-title svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+            transition: transform 0.25s ease;
+        }
+
+        .speaking-list-title:hover svg {
+            transform: translate(2px, -2px);
+        }
+
+        .speaking-list-year {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .speaking-list-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex-shrink: 0;
+        }
+
+        .speaking-list-event {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .speaking-list-location {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
         /* ---- Footer ---- */
         footer {
             border-top: 1px solid var(--border);
@@ -1304,32 +1375,31 @@
                         <span class="side-project-tag">Community</span>
                     </div>
                 </div>
-                <div class="side-project-card">
-                    <div class="side-project-card-icon side-project-card-icon--img">
-                        <img src="assets/basecamp.png" alt="">
+            </div>
+
+            <p class="experience-sublabel">Speaking</p>
+
+            <ul class="speaking-list">
+                <li>
+                    <div class="speaking-list-left">
+                        <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="speaking-list-title">Building Agents People Can't Stop Talking To <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        <span class="speaking-list-year">2025</span>
                     </div>
-                    <div class="side-project-card-body">
-                        <h4 class="side-project-card-title">BaseCamp 2025</h4>
-                        <div class="side-project-card-desc-row">
-                            <p class="side-project-card-desc">Led and gave a workshop &quot;Building Agents People Can't Stop Talking To&quot;, with XMTP and our agent builder ecosystem.</p>
-                            <a href="https://www.youtube.com/watch?v=q3G3yB5f4e0" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch BaseCamp talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-                        <span class="side-project-tag">Speaking</span>
+                    <div class="speaking-list-right">
+                        <span class="speaking-list-event">BaseCamp</span>
                     </div>
-                </div>
-                <div class="side-project-card">
-                    <div class="side-project-card-icon side-project-card-icon--img">
-                        <img src="assets/ethcc.png" alt="">
+                </li>
+                <li>
+                    <div class="speaking-list-left">
+                        <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="speaking-list-title">Mass Adoption through Dapps: How to Bring More Users Onchain <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        <span class="speaking-list-year">2025</span>
                     </div>
-                    <div class="side-project-card-body">
-                        <h4 class="side-project-card-title">Ethereum CC, Cannes 2025</h4>
-                        <div class="side-project-card-desc-row">
-                            <p class="side-project-card-desc">Representing Base, I participated in a panel, &quot;Mass Adoption through Dapps: How to Bring More Users Onchain&quot;.</p>
-                            <a href="https://www.youtube.com/watch?v=1Y0uuJ6IgpY" target="_blank" rel="noopener" class="side-project-link" aria-label="Watch Ethereum CC talk"><svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 11L11 3M11 3H5.5M11 3V8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-                        </div>
-                        <span class="side-project-tag">Speaking</span>
+                    <div class="speaking-list-right">
+                        <span class="speaking-list-event">ETH CC</span>
+                        <span class="speaking-list-location">Cannes, France</span>
                     </div>
-                </div>
+                </li>
+            </ul>
             </div>
         </div>
     </section>
