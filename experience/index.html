@@ -114,7 +114,7 @@
             color: var(--text);
             font-size: 0.9rem;
             font-weight: 500;
-            text-transform: lowercase;
+            text-transform: capitalize;
             transition: color 0.2s;
             position: relative;
         }
@@ -781,6 +781,10 @@
 
         .experience-other {
             margin-top: 0;
+        }
+
+        .experience-other > .experience-sublabel:first-child {
+            margin-top: 16px;
         }
 
         .experience-sublabel {
