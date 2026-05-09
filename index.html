@@ -1120,6 +1120,13 @@
             letter-spacing: 0.04em;
         }
 
+        .footer-location {
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+
         /* ---- Easter eggs ---- */
         .confetti {
             position: fixed;
@@ -1305,9 +1312,8 @@
             <div class="about-row">
                 <img src="assets/claudia-photo.png" alt="Claudia Haddad" class="about-photo" width="220">
                 <div class="about-text">
-                <p>I'm drawn to early, ambiguous spaces, and to the challenge of turning emerging primitives into products people actually understand and use.</p>
+                <p><strong>I'm drawn to early, ambiguous spaces, and to the challenge of turning emerging primitives into products people actually understand and use.</strong></p>
                 <p>I started my career as an engineer and still love building—whether that's shipping PRs, prototyping ideas, or organizing hackathons and helping others bring their ideas to life.</p>
-                <p>Across my work, I've launched 0→1 consumer products, built developer communities, and scaled products to millions of users.</p>
                 <p>I studied Cognitive Science at the University of Pennsylvania, with a focus on decision-making and consumer psychology. I think a lot about behavior, trust, and how to make complex systems feel simple, intuitive, and worth coming back to.</p>
                 <p>Outside of work, I spend a lot of time reading, planning trips to interesting places, and finding good coffee shops.</p>
                 </div>
@@ -1407,6 +1413,7 @@
             </a>
         </div>
         <p class="footer-built">© 2025 Claudia Haddad</p>
+        <p class="footer-location">NEW YORK CITY · <span id="nycTime"></span></p>
     </footer>
 
     <script>
@@ -1606,6 +1613,23 @@
                 marker.on('mouseover', function() { this.openPopup(); });
                 marker.on('mouseout', function() { this.closePopup(); });
             });
+        })();
+
+        // Live NYC time
+        (function() {
+            function updateNYCTime() {
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('en-US', {
+                    timeZone: 'America/New_York',
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
+                });
+                document.getElementById('nycTime').textContent = timeStr;
+            }
+            updateNYCTime();
+            setInterval(updateNYCTime, 1000);
         })();
 
     </script>
