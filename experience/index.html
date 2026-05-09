@@ -496,7 +496,7 @@
         .experience-grid {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
 
         .experience-grid .timeline-item {
@@ -694,19 +694,24 @@
         }
 
         .timeline-card--visual .timeline-card-detail-inner {
-            padding: 16px 24px 20px;
+            padding: 12px 24px 16px;
             border-top: 1px solid var(--border);
         }
 
         .timeline-card--visual .timeline-card-detail .timeline-summary {
-            margin: 0 0 12px 0;
+            margin: 0 0 6px 0;
             font-size: 0.85rem;
-            line-height: 1.65;
+            line-height: 1.5;
             color: var(--text-secondary);
         }
 
         .timeline-card--visual .timeline-card-detail .timeline-summary:last-child {
             margin-bottom: 0;
+        }
+
+        .timeline-card--visual .timeline-card-detail .timeline-summary strong {
+            display: inline-block;
+            margin-top: 4px;
         }
 
         .timeline-card--visual .timeline-card-detail .timeline-bullets {
