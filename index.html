@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
 
         * {
@@ -428,6 +430,73 @@
         }
 
         /* ---- Likes (within About) ---- */
+        /* ---- Favorites Map ---- */
+        .favorites-map-section {
+            margin-top: 48px;
+        }
+
+        .favorites-map-section .section-label {
+            margin-bottom: 8px;
+        }
+
+        .favorites-map-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .favorites-map-wrap {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        #favorites-map {
+            width: 100%;
+            height: 480px;
+        }
+
+        .map-tooltip {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 0;
+            border: none;
+            background: none;
+            box-shadow: none;
+        }
+
+        .map-tooltip-inner {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            max-width: 220px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+        }
+
+        .map-tooltip-inner h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0 0 4px;
+        }
+
+        .map-tooltip-inner p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin: 0 0 4px;
+            line-height: 1.5;
+        }
+
+        .map-tooltip-inner .map-tooltip-address {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            margin: 0;
+        }
+
+        .leaflet-popup-tip-container {
+            display: none;
+        }
+
         .likes-cards {
             display: grid;
             grid-template-columns: 1fr;
@@ -1189,6 +1258,10 @@
                 width: 180px;
                 max-height: 360px;
             }
+
+            #favorites-map {
+                height: 360px;
+            }
         }
     </style>
 </head>
@@ -1241,33 +1314,14 @@
                     <span class="like-item"><span class="t">Man and His Symbols</span></span><span class="like-item"><span class="t">Principles</span></span><span class="like-item"><span class="t">The Glass Castle</span></span><span class="like-item"><span class="t">Jane Eyre</span></span><span class="like-item"><span class="t">The Prince</span></span><span class="like-item"><span class="t">The Sovereign Individual</span></span><span class="like-item"><span class="t">The Master and His Emissary</span></span><span class="like-item"><span class="t">The Four Agreements</span></span><span class="like-item"><span class="t">Subliminal: How Your Unconscious Mind Rules</span></span>
                 </p>
             </article>
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3z"/>
-                        <path d="M12 15v6"/>
-                        <path d="M9 21h6"/>
-                    </svg>
-                    <h3>Wine</h3>
-                </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Per Se Inseparable Malbec</span> <span class="a">— Mendoza 2023</span></span><span class="like-item"><span class="t">Scribe White Pressed Pinot Noir</span> <span class="a">— 2024</span></span><span class="like-item"><span class="t">Yangchon Chungju</span></span><span class="like-item"><span class="t">Blanco Nieva Verdejo</span> <span class="a">— 2023</span></span>
-                </p>
-            </article>
-            <article class="likes-card">
-                <div class="likes-card-head">
-                    <svg class="likes-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M3 8h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8z"/>
-                        <path d="M17 10h2a3 3 0 0 1 0 6h-2"/>
-                        <path d="M7 3c0 1.5 1 1.5 1 3"/>
-                        <path d="M11 3c0 1.5 1 1.5 1 3"/>
-                    </svg>
-                    <h3>Coffee Shops</h3>
-                </div>
-                <p class="likes-items">
-                    <span class="like-item"><span class="t">Interlude</span></span><span class="like-item"><span class="t">Davelle</span></span><span class="like-item"><span class="t">Kabin</span></span><span class="like-item"><span class="t">Composition Coffee</span></span><span class="like-item"><span class="t">MONTE</span></span>
-                </p>
-            </article>
+
+        </div>
+        <div class="favorites-map-section">
+            <p class="section-label">My Favorites</p>
+            <p class="favorites-map-subtitle">Places I love in NYC — hover to see why.</p>
+            <div class="favorites-map-wrap">
+                <div id="favorites-map"></div>
+            </div>
         </div>
     </section>
 
@@ -1413,6 +1467,76 @@
                 logoClicks = 0;
             }, 350);
         });
+
+        // ---- Favorites Map ----
+        (function() {
+            var mapEl = document.getElementById('favorites-map');
+            if (!mapEl) return;
+
+            var map = L.map('favorites-map', {
+                center: [40.7260, -73.9897],
+                zoom: 13,
+                scrollWheelZoom: false,
+                zoomControl: true,
+                attributionControl: true
+            });
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 19
+            }).addTo(map);
+
+            var places = [
+                { name: 'Goods for the Study', desc: 'Perfect for buying journals and cards', address: '50 W 8th St, New York, NY 10011', lat: 40.7332, lng: -73.9987 },
+                { name: 'New York Pilates', desc: 'The most zen yet hard workout', address: '124 W Houston St, New York, NY 10012', lat: 40.7272, lng: -74.0003 },
+                { name: 'Brooklyn Botanical Garden', desc: 'Perfect in Spring', address: '990 Washington Ave, Brooklyn, NY 11225', lat: 40.6694, lng: -73.9624 },
+                { name: 'The Frick', desc: 'Beautiful house turned museum', address: '1 E 70th St, New York, NY 10021', lat: 40.7710, lng: -73.9673 },
+                { name: 'Misi', desc: 'Best pastas', address: '329 Kent Ave, Brooklyn, NY 11249', lat: 40.7134, lng: -73.9671 },
+                { name: 'Sauced', desc: 'Love the garden, great wine + grilled cheese', address: '331 Bedford Ave, Brooklyn, NY 11211', lat: 40.7108, lng: -73.9614 },
+                { name: 'Kettl', desc: 'Feels like Japan, great place to catch up with friends over matcha', address: '70 Greenpoint Ave, Brooklyn, NY 11222', lat: 40.7302, lng: -73.9577 },
+                { name: 'Davelle', desc: 'My favorite hidden gem — Japanese toasts and the best matcha lattes', address: '102 Suffolk St, New York, NY 10002', lat: 40.7185, lng: -73.9861 },
+                { name: 'Interlude', desc: 'Peaceful cafe with great matcha and coffee', address: '145 Hudson St, New York, NY 10013', lat: 40.7238, lng: -74.0081 },
+                { name: 'Frevo', desc: "Best dining experience in NYC, in an art gallery, on one of my favorite streets in NYC", address: '48 W 8th St, New York, NY 10011', lat: 40.7332, lng: -73.9990 },
+                { name: 'Jua', desc: 'Incredible Korean fine dining, the caviar kim is life changing', address: '36 E 22nd St, New York, NY 10010', lat: 40.7397, lng: -73.9878 },
+                { name: 'Pranakhon', desc: 'Best Thai food in NYC', address: '88 University Pl, New York, NY 10003', lat: 40.7339, lng: -73.9931 },
+                { name: 'The Nines', desc: 'Swanky jazz club with great drinks, food, and vibes', address: '9 Great Jones St, New York, NY 10012', lat: 40.7273, lng: -73.9940 },
+                { name: 'Lucien', desc: "Such a gem. Yes it's cramped and a bit chaotic but super social with amazing food and drinks", address: '14 1st Ave, New York, NY 10009', lat: 40.7233, lng: -73.9881 },
+                { name: 'Caffe Panna', desc: 'Best ice cream in NYC! Go early before they run out of flavors', address: '77 Irving Pl, New York, NY 10003', lat: 40.7368, lng: -73.9876 },
+                { name: 'Kabin', desc: 'Coffee shop by day, cocktail bar by night. Both are amazing!', address: '300 Spring St, New York, NY 10013', lat: 40.7260, lng: -74.0074 },
+                { name: "Martiny's", desc: "The closest you'll get to an old fashioned living room in NYC, cozy and great cocktails", address: '121 E 17th St, New York, NY 10003', lat: 40.7363, lng: -73.9876 },
+                { name: 'McNally Jackson Books', desc: 'Loveee the book selection here', address: '134 Prince St, New York, NY 10012', lat: 40.7254, lng: -74.0006 }
+            ];
+
+            var pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36"><path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 22 14 22s14-11.5 14-22C28 6.27 21.73 0 14 0z" fill="#1a1a2e"/><circle cx="14" cy="13" r="5.5" fill="#fff"/></svg>';
+
+            var pinIcon = L.divIcon({
+                html: pinSvg,
+                className: '',
+                iconSize: [28, 36],
+                iconAnchor: [14, 36],
+                popupAnchor: [0, -36]
+            });
+
+            places.forEach(function(place) {
+                var marker = L.marker([place.lat, place.lng], { icon: pinIcon }).addTo(map);
+
+                var popupContent = '<div class="map-tooltip-inner">' +
+                    '<h4>' + place.name + '</h4>' +
+                    '<p>' + place.desc + '</p>' +
+                    '<p class="map-tooltip-address">' + place.address + '</p>' +
+                    '</div>';
+
+                marker.bindPopup(popupContent, {
+                    className: 'map-tooltip',
+                    closeButton: false,
+                    offset: [0, -4]
+                });
+
+                marker.on('mouseover', function() { this.openPopup(); });
+                marker.on('mouseout', function() { this.closePopup(); });
+            });
+        })();
 
     </script>
 
