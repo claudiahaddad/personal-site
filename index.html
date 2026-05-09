@@ -440,10 +440,17 @@
 
         /* ---- Book Covers Grid ---- */
         .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            display: flex;
             gap: 16px;
             margin-bottom: 40px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .books-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .books-subtitle {
@@ -457,6 +464,8 @@
             border-radius: 8px;
             overflow: hidden;
             cursor: default;
+            width: 120px;
+            min-width: 120px;
             aspect-ratio: 2 / 3;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: transform 0.2s, box-shadow 0.2s;
@@ -1271,8 +1280,12 @@
             }
 
             .books-grid {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
                 gap: 12px;
+            }
+
+            .book-item {
+                width: 100px;
+                min-width: 100px;
             }
         }
     </style>
