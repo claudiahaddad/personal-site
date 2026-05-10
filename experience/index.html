@@ -23,7 +23,7 @@
             --secondary-light: #7A8F87;
             --text: #1a1a2e;
             --text-secondary: #555;
-            --bg: #ffffff;
+            --bg: #fafaf8;
             --white: #ffffff;
             --border: #e5e5e5;
         }
@@ -348,9 +348,9 @@
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--secondary-light);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
             margin-bottom: 12px;
         }
 
@@ -594,15 +594,15 @@
 
         .timeline-card {
             background: var(--white);
-            border: 1px solid var(--border);
+            border: none;
             border-radius: 12px;
             padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
             transition: all 0.2s;
         }
 
         .timeline-card:hover {
-            border-color: #ccc;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
         /* Visual experience card: default is heading-only (transparent); hover reveals image + bullets */
@@ -790,9 +790,9 @@
         .experience-sublabel {
             font-size: 0.72rem;
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--secondary-light);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.06em;
             margin-top: 40px;
             margin-bottom: 16px;
         }
