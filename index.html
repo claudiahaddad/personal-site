@@ -25,7 +25,7 @@
             --secondary-light: #7A8F87;
             --text: #1a1a2e;
             --text-secondary: #555;
-            --bg: #ffffff;
+            --bg: #fafaf8;
             --white: #ffffff;
             --border: #e5e5e5;
         }
@@ -183,6 +183,17 @@
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-greeting {
@@ -350,9 +361,9 @@
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--secondary);
+            color: var(--secondary-light);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
             margin-bottom: 12px;
         }
 
@@ -451,6 +462,7 @@
             padding-bottom: 8px;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
+            scroll-snap-type: x mandatory;
         }
 
         .books-grid::-webkit-scrollbar {
@@ -469,6 +481,7 @@
             overflow: hidden;
             cursor: default;
             width: 120px;
+            scroll-snap-align: start;
             min-width: 120px;
             aspect-ratio: 2 / 3;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -679,15 +692,15 @@
 
         .timeline-card {
             background: var(--white);
-            border: 1px solid var(--border);
+            border: none;
             border-radius: 12px;
             padding: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
             transition: all 0.2s;
         }
 
         .timeline-card:hover {
-            border-color: #ccc;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
 
         /* Visual experience card: default is heading-only (transparent); hover reveals image + bullets */
@@ -1325,7 +1338,7 @@
     <!-- About -->
     <section id="about">
         <p class="section-label">About</p>
-        <div class="about-grid">
+        <div class="about-grid fade-in">
             <div class="about-row">
                 <img src="assets/claudia-photo.png" alt="Claudia Haddad" class="about-photo" width="220">
                 <div class="about-text">
@@ -1336,7 +1349,7 @@
                 </div>
             </div>
         </div>
-        <div class="favorites-section">
+        <div class="favorites-section fade-in">
             <p class="section-label">My Favorites</p>
 
             <p class="books-subtitle">Books I come back to.</p>
@@ -1406,8 +1419,8 @@
                 </div>
             </div>
 
-            <p class="favorites-map-subtitle">Places I love in NYC.</p>
-            <div class="favorites-map-wrap">
+            <p class="favorites-map-subtitle fade-in">Places I love in NYC.</p>
+            <div class="favorites-map-wrap fade-in">
                 <div id="favorites-map"></div>
             </div>
         </div>
@@ -1464,6 +1477,10 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        document.querySelectorAll('.fade-in').forEach(item => {
             observer.observe(item);
         });
 
@@ -1577,29 +1594,30 @@
             }).addTo(map);
 
             var places = [
-                { name: 'Goods for the Study', desc: 'My favorite place for journals and cards.', address: '50 W 8th St, New York, NY 10011', lat: 40.7332, lng: -73.9987 },
-                { name: 'New York Pilates', desc: 'Somehow calming and brutal at the same time.', address: '124 W Houston St, New York, NY 10012', lat: 40.7272, lng: -74.0003 },
-                { name: 'Brooklyn Botanic Garden', desc: 'Especially good in the spring.', address: '990 Washington Ave, Brooklyn, NY 11225', lat: 40.6694, lng: -73.9624 },
-                { name: 'The Frick Collection', desc: 'A museum inside an old mansion on the Upper East Side.', address: '1 E 70th St, New York, NY 10021', lat: 40.7710, lng: -73.9673 },
-                { name: 'Misi', desc: 'Still my favorite pasta in NYC.', address: '329 Kent Ave, Brooklyn, NY 11249', lat: 40.7134, lng: -73.9671 },
-                { name: 'Sauced', desc: 'Backyard wine bar with grilled cheese and good music.', address: '331 Bedford Ave, Brooklyn, NY 11211', lat: 40.7108, lng: -73.9614 },
-                { name: 'Kettl', desc: 'Feels like you left NYC for an hour.', address: '70 Greenpoint Ave, Brooklyn, NY 11222', lat: 40.7302, lng: -73.9577 },
-                { name: 'Davelle', desc: 'Japanese breakfast plates, honey toast, and really good matcha.', address: '102 Suffolk St, New York, NY 10002', lat: 40.7185, lng: -73.9861 },
-                { name: 'Interlude', desc: 'Sunny café I end up staying at for way too long.', address: '145 Hudson St, New York, NY 10013', lat: 40.7238, lng: -74.0081 },
-                { name: 'Frevo', desc: 'Hidden behind an art gallery on one of my favorite streets in the city.', address: '48 W 8th St, New York, NY 10011', lat: 40.7332, lng: -73.9990 },
-                { name: 'Jua', desc: 'Korean tasting menu I still think about regularly.', address: '36 E 22nd St, New York, NY 10010', lat: 40.7397, lng: -73.9878 },
-                { name: 'Pranakhon', desc: 'My go-to Thai spot.', address: '88 University Pl, New York, NY 10003', lat: 40.7339, lng: -73.9931 },
-                { name: 'The Nines', desc: 'Jazz, martinis, and old New York vibes.', address: '9 Great Jones St, New York, NY 10012', lat: 40.7273, lng: -73.9940 },
-                { name: 'Lucien', desc: 'Tiny, loud, chaotic, somehow always a good time.', address: '14 1st Ave, New York, NY 10009', lat: 40.7233, lng: -73.9881 },
-                { name: 'Caffe Panna', desc: 'New flavors every day and somehow all of them are good.', address: '77 Irving Pl, New York, NY 10003', lat: 40.7368, lng: -73.9876 },
-                { name: 'Kabin', desc: 'Coffee shop during the day, cocktail bar at night.', address: '300 Spring St, New York, NY 10013', lat: 40.7260, lng: -74.0074 },
-                { name: "Martiny's", desc: "Feels more like someone's apartment than a cocktail bar.", address: '121 E 17th St, New York, NY 10003', lat: 40.7363, lng: -73.9876 },
-                { name: 'McNally Jackson Books', desc: 'I always leave with more books than I planned to buy.', address: '134 Prince St, New York, NY 10012', lat: 40.7254, lng: -74.0006 },
-                { name: 'La Cabra', desc: 'Scandinavian café with really good pastries and coffee.', address: '284 Lafayette St, New York, NY 10012', lat: 40.7234, lng: -73.9966 },
-                { name: 'PUBLIC Hotel', desc: 'One of my favorite places to work for a few hours.', address: '215 Chrystie St, New York, NY 10002', lat: 40.7229, lng: -73.9914 },
-                { name: 'Sushi Ishikawa', desc: 'Quiet omakase spot on the Upper West Side.', address: '207 W 80th St, New York, NY 10024', lat: 40.7835, lng: -73.9760 },
-                { name: 'Humming Puppy', desc: 'My favorite yoga studio in the city.', address: '119 W 23rd St, New York, NY 10011', lat: 40.7434, lng: -73.9944 },
-                { name: 'The Well', desc: 'One of my favorite places in the city to unplug.', address: '2 E 15th St, New York, NY 10003', lat: 40.7367, lng: -73.9924 }
+                { name: 'Goods for the Study', desc: 'My favorite place for journals and cards', address: '50 W 8th St, New York, NY 10011', lat: 40.7332, lng: -73.9987 },
+                { name: 'New York Pilates', desc: 'Somehow calming and brutal at the same time', address: '124 W Houston St, New York, NY 10012', lat: 40.7272, lng: -74.0003 },
+                { name: 'Brooklyn Botanic Garden', desc: 'Especially good in the spring', address: '990 Washington Ave, Brooklyn, NY 11225', lat: 40.6694, lng: -73.9624 },
+                { name: 'The Frick Collection', desc: 'A museum inside an old mansion on the Upper East Side', address: '1 E 70th St, New York, NY 10021', lat: 40.7710, lng: -73.9673 },
+                { name: 'Misi', desc: 'Still my favorite pasta in NYC', address: '329 Kent Ave, Brooklyn, NY 11249', lat: 40.7134, lng: -73.9671 },
+                { name: 'Sauced', desc: 'Backyard wine bar with grilled cheese and good music', address: '331 Bedford Ave, Brooklyn, NY 11211', lat: 40.7108, lng: -73.9614 },
+                { name: 'Kettl', desc: 'Feels like you left NYC for an hour', address: '70 Greenpoint Ave, Brooklyn, NY 11222', lat: 40.7302, lng: -73.9577 },
+                { name: 'Davelle', desc: 'Japanese breakfast plates, honey toast, and really good matcha', address: '102 Suffolk St, New York, NY 10002', lat: 40.7185, lng: -73.9861 },
+                { name: 'Interlude', desc: 'Sunny café I end up staying at for way too long', address: '145 Hudson St, New York, NY 10013', lat: 40.7238, lng: -74.0081 },
+                { name: 'Frevo', desc: 'Hidden behind an art gallery on one of my favorite streets in the city', address: '48 W 8th St, New York, NY 10011', lat: 40.7332, lng: -73.9990 },
+                { name: 'Jua', desc: 'Korean tasting menu I still think about regularly', address: '36 E 22nd St, New York, NY 10010', lat: 40.7397, lng: -73.9878 },
+                { name: 'Pranakhon', desc: 'My go-to Thai spot', address: '88 University Pl, New York, NY 10003', lat: 40.7339, lng: -73.9931 },
+                { name: 'The Nines', desc: 'Jazz, martinis, and old New York vibes', address: '9 Great Jones St, New York, NY 10012', lat: 40.7273, lng: -73.9940 },
+                { name: 'Lucien', desc: 'Tiny, loud, chaotic, somehow always a good time', address: '14 1st Ave, New York, NY 10009', lat: 40.7233, lng: -73.9881 },
+                { name: 'Caffe Panna', desc: 'New flavors every day and somehow all of them are good', address: '77 Irving Pl, New York, NY 10003', lat: 40.7368, lng: -73.9876 },
+                { name: 'Kabin', desc: 'Coffee shop during the day, cocktail bar at night', address: '300 Spring St, New York, NY 10013', lat: 40.7260, lng: -74.0074 },
+                { name: "Martiny's", desc: "Feels more like someone's apartment than a cocktail bar", address: '121 E 17th St, New York, NY 10003', lat: 40.7363, lng: -73.9876 },
+                { name: 'McNally Jackson Books', desc: 'I always leave with more books than I planned to buy', address: '134 Prince St, New York, NY 10012', lat: 40.7254, lng: -74.0006 },
+                { name: 'La Cabra', desc: 'Scandinavian café with really good pastries and coffee', address: '284 Lafayette St, New York, NY 10012', lat: 40.7234, lng: -73.9966 },
+                { name: 'PUBLIC Hotel', desc: 'One of my favorite places to work for a few hours', address: '215 Chrystie St, New York, NY 10002', lat: 40.7229, lng: -73.9914 },
+                { name: 'Sushi Ishikawa', desc: 'Quiet omakase spot on the Upper West Side', address: '207 W 80th St, New York, NY 10024', lat: 40.7835, lng: -73.9760 },
+                { name: 'Humming Puppy', desc: 'My favorite yoga studio in the city', address: '119 W 23rd St, New York, NY 10011', lat: 40.7434, lng: -73.9944 },
+                { name: 'The Well', desc: 'One of my favorite places in the city to unplug', address: '2 E 15th St, New York, NY 10003', lat: 40.7367, lng: -73.9924 },
+                { name: 'Clemente Bar', desc: 'Beautifully designed cocktail bar', address: '11 Madison Ave, New York, NY 10010', lat: 40.7414, lng: -73.9863 }
             ];
 
             var pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="36" viewBox="0 0 28 36"><path d="M14 0C6.27 0 0 6.27 0 14c0 10.5 14 22 14 22s14-11.5 14-22C28 6.27 21.73 0 14 0z" fill="#1a1a2e"/><circle cx="14" cy="13" r="5.5" fill="#fff"/></svg>';
